@@ -50,8 +50,8 @@ public class ResponsavelActions {
 				System.out.println("responsavel registrado com sucesso!");
 			}
 		}catch(Exception e) {
-			// System.out.println("Ocorreu um erro! Entre em responsavel com o administrador!");
-			e.printStackTrace();
+			System.out.println("Ocorreu um erro! Entre em responsavel com o administrador!");
+			// e.printStackTrace();
 		}
 		
 	}
