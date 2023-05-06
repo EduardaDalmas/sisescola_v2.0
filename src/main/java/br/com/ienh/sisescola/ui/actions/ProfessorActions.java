@@ -42,15 +42,74 @@ public class ProfessorActions {
 	}
 
 	public void atualizar() {
-		
+		try {
+			System.out.println();
+			
+			int id = userInput.readInt("Informe o id do professor que deseja atualizar:");
+			
+			Professor professor = professorDAO.findById(id);
+			
+			if(professor == null) {
+				System.out.println("professor não encontrado!");
+			}else {
+				System.out.println("Informe os novos dados do professor:");
+				
+				professor.setNome(userInput.readText("Nome:"));
+				
+				
+				professorDAO.update(professor);;
+				
+				System.out.println();
+				System.out.println("PROFESSOR ATUALIZADO COM SUCESSO!");
+			}
+					
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro ao tentar atualizar o professor! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
 	}
 
 	public void remover() {
-		
+		try {
+			System.out.println();
+			
+			int id = userInput.readInt("Informe o id do aluno que deseja remover:");
+			
+			Professor professor = professorDAO.findById(id);
+			
+			System.out.println();
+			
+			if(professor == null) {
+				System.out.println("Professor não encontrado!");
+			}else {
+				professorDAO.remove(professor);
+				System.out.println("Professor removido com sucesso!");
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro ao tentar remover o professor! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
 	}
 
 	public void buscarPorId() {
-		
+		try {
+			System.out.println();
+	
+			int id = userInput.readInt("Informe o id do professor que deseja buscar:");
+			
+			Professor professor = professorDAO.findById(id);
+			
+			System.out.println();
+			
+			if(professor == null) {
+				System.out.println("professor não encontrado!");
+			}else {
+				System.out.println(professor.getNome());
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro ao tentar buscar o professor! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
 	}
 	
 	public void buscarTodos() {

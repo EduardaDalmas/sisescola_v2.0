@@ -42,7 +42,7 @@ public class AlunoActions {
 			alunoDAO.insert(aluno);
 			
 			System.out.println();
-			System.out.println("ALUNO REGISTRADO COM SUCESSO!");
+			System.out.println("Aluno registrado com sucesso!");
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar registrar o aluno! Entre em contato com o administrador!");
 			//e.printStackTrace();
@@ -74,7 +74,7 @@ public class AlunoActions {
 				alunoDAO.update(aluno);;
 				
 				System.out.println();
-				System.out.println("ALUNO ATUALIZADO COM SUCESSO!");
+				System.out.println("Aluno atualizado com sucesso!");
 			}
 					
 		}catch(Exception e) {
@@ -96,10 +96,10 @@ public class AlunoActions {
 			System.out.println();
 			
 			if(aluno == null) {
-				System.out.println("ALUNO NÃO ENCONTRADO!");
+				System.out.println("Aluno não encontrado!");
 			}else {
 				alunoDAO.remove(aluno);
-				System.out.println("ALUNO REMOVIDO COM SUCESSO!");
+				System.out.println("Aluno removido com sucesso!");
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar remover o aluno! Entre em contato com o administrador!");
@@ -120,8 +120,9 @@ public class AlunoActions {
 			System.out.println();
 			
 			if(aluno == null) {
-				System.out.println("ALUNO NÃO ENCONTRADO!");
+				System.out.println("Aluno não encontrado!");
 			}else {
+				System.out.println("Dados do aluno: ");
 				System.out.println(aluno.getNome());
 			}
 		}catch(Exception e) {
@@ -141,7 +142,7 @@ public class AlunoActions {
 			System.out.println();
 			
 			if(alunos.size() == 0) {
-				System.out.println("NÃO HÁ ALUNOS PARA VISUALIZAR!");
+				System.out.println("Não há alunos para visualizar!");
 			}else {
 				for (Aluno aluno : alunos) {
 					System.out.println(aluno.getId() + " - " + aluno.getNome());

@@ -20,6 +20,7 @@ public class MenuAluno implements Menu {
 			System.out.println("4. Buscar por id");
 			System.out.println("5. Buscar todos");
 			System.out.println("6. Contatos de aluno");
+			System.out.println("7. Responsável do aluno");
 			System.out.println("---------------------");
 			System.out.println("0. Sair deste menu");
 			System.out.println();
@@ -32,6 +33,7 @@ public class MenuAluno implements Menu {
 			else if(option == 4) alunoActions.buscarPorId();
 			else if(option == 5) alunoActions.buscarTodos();
 			else if(option == 6) new MenuContatos().executar();
+			else if(option == 7) new MenuResponsavel().executar();
 			else if(option == 0) break;
 			
 		}
