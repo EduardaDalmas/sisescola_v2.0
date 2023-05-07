@@ -1,22 +1,41 @@
 Aluno 
 	(submenu)
 	- Responsável: OK
+		- inserir OK
+		- atualizar OK
+		- remover OK
+		- visualizarPorAluno OK
 	- Contato: OK
+		- inserir OK
+		- atualizar OK
+		- remover OK
+		- visualizarPorAluno OK
 Professor
+	- inserir OK
 	- atualizar OK
 	- remover OK
 	- buscarPorId OK
+	- buscarTodos OK
 
 Turma
 	- inserir OK
 	- atualizar OK
 	- remover OK
 	- buscarPorId OK
+	- BuscarTodos OK
 
-## falta menu 
-Disciplina
-Curso
+Disciplina OK
+	- inserir OK
+	- atualizar OK
+	- remover OK
+	- buscarPorId OK
+	- BuscarTodos OK
 
-Aluno OK -> Contato OK 
+Curso OK
+	- inserir OK
+	- atualizar OK
+	- remover OK
+	- buscarPorId OK
+	- BuscarTodos OK
 
 
