@@ -38,7 +38,7 @@ public class ContatoActions {
 			System.out.println();
 			
 			if(aluno == null) {
-				System.out.println("ALUNO INEXISTENTE!");
+				System.out.println("Aluno não encontrado!");
 			}else {
 				System.out.println("Informe os dados de um novo contato:");
 				
@@ -59,6 +59,35 @@ public class ContatoActions {
 		
 	}
 
+	public void atualizar() {
+		
+		try {
+			System.out.println();
+			
+			int id = userInput.readInt("Informe o id do contato que deseja atualizar:");
+			
+			Contato contato = contatoDAO.findById(id);
+			
+			if(contato == null) {
+				System.out.println("Contato não encontrado!");
+			}else {
+				System.out.println("Informe os novos dados do Contato:");
+				
+				contato.setDescricao(userInput.readText("Descricao:"));
+				contato.setTipo(userInput.readText("Tipo:"));
+				
+				contatoDAO.update(contato);
+				
+				System.out.println();
+				System.out.println("Contato atualizado com sucesso!");
+			}
+					
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro ao tentar remover o aluno! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+	}
+
 	public void remover() {
 		
 		try {
@@ -71,12 +100,12 @@ public class ContatoActions {
 			System.out.println();
 			
 			if(aluno == null) {
-				System.out.println("ALUNO INEXISTENTE!");
+				System.out.println("Aluno não encontrado!");
 			}else {
 				List<Contato> contatos = aluno.getContatos();
 				
 				if(contatos.size() == 0) {
-					System.out.println("ESTE ALUNO NÃO POSSUI CONTATOS PARA MOSTRAR!");
+					System.out.println("Este aluno não possui contatos para mostrar.!");
 				}else {
 					System.out.println("EXIBINDO CONTATOS DO ALUNO:");
 					
@@ -92,7 +121,7 @@ public class ContatoActions {
 					contatoDAO.remove(contato);
 					
 					System.out.println();
-					System.out.println("CONTATO REMOVIDO COM SUCESSO!");
+					System.out.println("Contato removido com sucesso. ");
 				}
 				
 			}

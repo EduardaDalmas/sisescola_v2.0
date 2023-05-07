@@ -1,6 +1,7 @@
 Aluno 
 	(submenu)
-	- Responsável: em andamento...
+	- Responsável: OK
+	- Contato: OK
 Professor
 	- atualizar OK
 	- remover OK

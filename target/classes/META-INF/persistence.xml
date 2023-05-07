@@ -6,9 +6,9 @@
         
         <persistence-unit name="SisEscola">
         	<properties>
-        		<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost/sisescola2?useTimezone=true&amp;serverTimezone=UTC" />
+        		<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost/sisescola?useTimezone=true&amp;serverTimezone=UTC" />
         		<property name="jakarta.persistence.jdbc.user" value="root" />
-        		<property name="jakarta.persistence.jdbc.password" value="ienh" />
+        		<property name="jakarta.persistence.jdbc.password" value="140501" />
         		<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
         		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
         		<property name="hibernate.format_sql" value="false" />
