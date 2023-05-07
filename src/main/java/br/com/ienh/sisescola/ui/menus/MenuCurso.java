@@ -19,6 +19,7 @@ public class MenuCurso {
 			System.out.println("3. Remover");
 			System.out.println("4. Visualizar cursos");
 			System.out.println("5. Buscar curso por ID");
+			System.out.println("6. Vincular curso á disciplina");
 			System.out.println("---------------------");
 			System.out.println("0. Sair deste menu");
 			System.out.println();
@@ -30,6 +31,7 @@ public class MenuCurso {
 			else if(option == 3) cursoActions.remover();
 			else if(option == 4) cursoActions.buscarTodos();
 			else if(option == 5) cursoActions.buscarPorId();
+			else if(option == 6) cursoActions.vincularDisciplina();
 			else if(option == 0) break;
 			
 		}

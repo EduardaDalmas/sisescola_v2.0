@@ -1,18 +1,22 @@
 package br.com.ienh.sisescola.ui.actions;
 import java.util.List;
 import br.com.ienh.sisescola.dao.CursoDAO;
+import br.com.ienh.sisescola.dao.DisciplinaDAO;
 import br.com.ienh.sisescola.entidades.Curso;
+import br.com.ienh.sisescola.entidades.Disciplina;
 import br.com.ienh.sisescola.uteis.UserInput;
 
 public class CursoActions {
     private UserInput userInput;
     private CursoDAO cursoDAO;
+	private DisciplinaDAO disciplinaDAO;
 
     public CursoActions() {
 		
 		try {
 			userInput = new UserInput();
             cursoDAO = new CursoDAO();
+			disciplinaDAO = new DisciplinaDAO();
 		} catch (Exception e) {
 			System.out.println("Ocorreu algum problema no acesso a base de dados!");
 		}
@@ -129,5 +133,38 @@ public class CursoActions {
 			System.out.println("Ocorreu um erro ao tentar buscar o curso! Entre em contato com o administrador!");
 			//e.printStackTrace();
 		}
+	}
+
+	public void vincularDisciplina() {
+		
+		try {
+			int idDisciplina = userInput.readInt("Id da disciplina:");
+			Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+			
+			System.out.println();
+			
+			if(disciplina == null) {
+				System.out.println("disciplina não encontrada!");
+			}else {
+				int idCurso = userInput.readInt("Id do curso:");
+				Curso curso = cursoDAO.findById(idCurso);
+				if(curso == null) {
+					System.out.println("curso não encontrado!");
+				}else {
+					String option = userInput.readText("Vincular curso à disciplina? (s/n)");
+					if(option.equals("s")) {
+						disciplina.getCursos().add(curso);
+						disciplinaDAO.update(disciplina);
+						System.out.println("curso vinculado á disciplina.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
 	}
 }

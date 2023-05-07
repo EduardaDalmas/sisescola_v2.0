@@ -1,19 +1,23 @@
 package br.com.ienh.sisescola.ui.actions;
 import java.util.List;
 import br.com.ienh.sisescola.dao.DisciplinaDAO;
+import br.com.ienh.sisescola.dao.TurmaDAO;
 import br.com.ienh.sisescola.entidades.Disciplina;
+import br.com.ienh.sisescola.entidades.Turma;
 import br.com.ienh.sisescola.uteis.UserInput;
 
 public class DisciplinaActions {
     
     private UserInput userInput;
     private DisciplinaDAO disciplinaDAO;
+	private TurmaDAO turmaDAO;
 
     public DisciplinaActions() {
 		
 		try {
 			userInput = new UserInput();
             disciplinaDAO = new DisciplinaDAO();
+			turmaDAO = new TurmaDAO();
 		} catch (Exception e) {
 			System.out.println("Ocorreu algum problema no acesso a base de dados!");
 		}
@@ -132,5 +136,38 @@ public class DisciplinaActions {
 			System.out.println("Ocorreu um erro ao tentar buscar o professor! Entre em contato com o administrador!");
 			//e.printStackTrace();
 		}
+	}
+
+	public void vincularTurma() {
+		
+		try {
+			int idDisciplina = userInput.readInt("Id da disciplina:");
+			Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+			
+			System.out.println();
+			
+			if(disciplina == null) {
+				System.out.println("disciplina não encontrada!");
+			}else {
+				int idTurma = userInput.readInt("Id da turma:");
+				Turma turma = turmaDAO.findById(idTurma);
+				if(turma == null) {
+					System.out.println("turma não encontrado!");
+				}else {
+					String option = userInput.readText("Vincular turma à disciplina? (s/n)");
+					if(option.equals("s")) {
+						disciplina.getTurmas().add(turma);
+						disciplinaDAO.update(disciplina);
+						System.out.println("turma vinculado á disciplina.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
 	}
 }

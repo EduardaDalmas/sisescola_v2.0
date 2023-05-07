@@ -37,7 +37,7 @@ public class TurmaActions {
 			System.out.println();
 			
 			System.out.println("Informe os dados de uma nova turma:");
-			turma.setSemestre(userInput.readText("Semestre: (yyyy/s)"));
+			turma.setSemestre(userInput.readText("Semestre: (1)"));
 			int id = userInput.readInt("Informe o id do professor:");
 			
 			Professor professor = professorDAO.findById(id);
@@ -115,7 +115,7 @@ public class TurmaActions {
 			if(turma == null) {
 				System.out.println("turma não encontrada!");
 			}else {
-				System.out.println(turma.getSemestre());
+				System.out.println("Semestre: " + turma.getSemestre());
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar buscar a turma! Entre em contato com o administrador!");
@@ -132,7 +132,7 @@ public class TurmaActions {
 				System.out.println("Não há turmas para apresentar!");
 			}else {
 				for (Turma turma : turmas) {
-					System.out.println(turma.getId() + " - " + turma.getSemestre() + " - " + turma.getProfessor());
+					System.out.println("ID: " + turma.getId() + " - Semestre: " + turma.getSemestre() + " - Professor: " + turma.getProfessor());
 				}
 			}
 		}catch(Exception e) {
