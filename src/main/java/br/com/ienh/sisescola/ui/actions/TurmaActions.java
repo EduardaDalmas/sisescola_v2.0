@@ -71,8 +71,12 @@ public class TurmaActions {
 				System.out.println("Informe os novos dados do turma:");
 				
 				turma.setSemestre(userInput.readText("Semestre:"));
-				
-				turmaDAO.update(turma);;
+				int idProfessor = userInput.readInt("Informe o id do professor:");
+			
+				Professor professor = professorDAO.findById(idProfessor);
+				turma.setProfessor(professor);
+			
+				turmaDAO.update(turma);
 				
 				System.out.println();
 				System.out.println("Turma atualizada com sucesso!");
@@ -119,7 +123,7 @@ public class TurmaActions {
 			if(turma == null) {
 				System.out.println("turma não encontrada!");
 			}else {
-				System.out.println("Semestre: " + turma.getSemestre());
+				System.out.println("Semestre: " + turma.getSemestre() + " professor: " + turma.getProfessor().getNome());
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar buscar a turma! Entre em contato com o administrador!");
@@ -136,7 +140,7 @@ public class TurmaActions {
 				System.out.println("Não há turmas para apresentar!");
 			}else {
 				for (Turma turma : turmas) {
-					System.out.println("ID: " + turma.getId() + " - Semestre: " + turma.getSemestre() + " - Professor: " + turma.getProfessor());
+					System.out.println("ID: " + turma.getId() + " - Semestre: " + turma.getSemestre() + " - Professor: " + turma.getProfessor().getNome());
 				}
 			}
 		}catch(Exception e) {
@@ -284,11 +288,11 @@ public class TurmaActions {
 				if(disciplina == null) {
 					System.out.println("Disciplina não encontrado!");
 				}else {
-					String option = userInput.readText("Vincular disciplina à turma? (s/n)");
+					String option = userInput.readText("Desincular disciplina à turma? (s/n)");
 					if(option.equals("s")) {
 						turma.getDisciplinas().remove(disciplina);
 						turmaDAO.update(turma);
-						System.out.println("Disciplina vinculada á turma.");
+						System.out.println("Disciplina desvinculada da turma.");
 					} else {
 						System.out.println("Procedimento cancelado.");
 					}

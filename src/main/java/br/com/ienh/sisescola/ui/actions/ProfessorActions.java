@@ -60,7 +60,7 @@ public class ProfessorActions {
 				professorDAO.update(professor);;
 				
 				System.out.println();
-				System.out.println("PROFESSOR ATUALIZADO COM SUCESSO!");
+				System.out.println("Professor atualizado com sucesso!");
 			}
 					
 		}catch(Exception e) {
@@ -104,7 +104,7 @@ public class ProfessorActions {
 			if(professor == null) {
 				System.out.println("professor não encontrado!");
 			}else {
-				System.out.println(professor.getNome());
+				System.out.println(professor.getId() + " - " + professor.getNome());
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar buscar o professor! Entre em contato com o administrador!");
@@ -120,7 +120,7 @@ public class ProfessorActions {
 			List<Professor> professores = professorDAO.findAll();
 			
 			if(professores.size() == 0) {
-				System.out.println("NÃO HÁ PROFESSORES PARA MOSTRAR!");
+				System.out.println("Não foram encontrados professores!");
 			}else {
 				for (Professor professor : professores) {
 					System.out.println(professor.getId() + " - " + professor.getNome());

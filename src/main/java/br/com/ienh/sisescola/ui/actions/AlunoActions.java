@@ -123,7 +123,7 @@ public class AlunoActions {
 				System.out.println("Aluno não encontrado!");
 			}else {
 				System.out.println("Dados do aluno: ");
-				System.out.println(aluno.getNome());
+				System.out.println(aluno.getId() + " - " + aluno.getNome() + " - " + aluno.getNumeroMatricula() + " - " + aluno.getNascimento());
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro ao tentar buscar o aluno! Entre em contato com o administrador!");

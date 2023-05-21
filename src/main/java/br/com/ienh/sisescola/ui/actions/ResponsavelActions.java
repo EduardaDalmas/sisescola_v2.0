@@ -39,7 +39,7 @@ public class ResponsavelActions {
 			if(aluno == null) {
 				System.out.println("Aluno inexistente!");
 			}else {
-				System.out.println("Informe os dados de um novo contato:");
+				System.out.println("Informe os dados de um novo responsavel:");
 				
 				Responsavel responsavel = new Responsavel();
 				responsavel.getAlunos().add(aluno);
@@ -119,7 +119,7 @@ public class ResponsavelActions {
 					responsavelDAO.remove(responsavel);
 					
 					System.out.println();
-					System.out.println("Contado removido com sucesso!");
+					System.out.println("Responsavel removido com sucesso!");
 				}
 				
 			}
@@ -137,7 +137,7 @@ public class ResponsavelActions {
 
 			System.out.println();
 			
-			int id = userInput.readInt("Informe o id do aluno que deseja ver contatos:");
+			int id = userInput.readInt("Informe o id do aluno que deseja ver responsaveis:");
 			
 			Aluno aluno = alunoDAO.findById(id);
 			
@@ -152,7 +152,7 @@ public class ResponsavelActions {
 					System.out.println("Não há responsáveis para apresentar!");
 				}else {
 					for (Responsavel responsavel : responsaveis) {
-						System.out.println(responsavel.getNome() + " - " + responsavel.getEndereco());
+						System.out.println(responsavel.getId() + " - " + responsavel.getNome() + " - " + responsavel.getEndereco());
 					}
 				}
 			}
