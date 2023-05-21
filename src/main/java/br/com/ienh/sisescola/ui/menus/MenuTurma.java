@@ -25,6 +25,7 @@ public class MenuTurma implements Menu {
 			System.out.println("9. Vincular disciplina a turma");
 			System.out.println("10. Desvincular disciplina da turma");
 			System.out.println("11. Visualizar disciplina da turma");
+			System.out.println("12. Vincular professor a turma");
 			System.out.println("---------------------");
 			System.out.println("0. Sair deste menu");
 			System.out.println();
@@ -42,6 +43,7 @@ public class MenuTurma implements Menu {
 			else if(option == 9) turmaActions.vincularDisciplina();
 			else if(option == 10) turmaActions.desvincularDisciplina();
 			else if(option == 11) turmaActions.visualizarDisciplinaTurma();
+			else if(option == 12) turmaActions.vincularProfessor();
 			else if(option == 0) break;
 			
 		}

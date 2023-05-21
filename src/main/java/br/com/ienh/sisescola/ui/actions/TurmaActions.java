@@ -327,5 +327,38 @@ public class TurmaActions {
 		}
 		
 	}
+
+	public void vincularProfessor() {
+		
+		try {
+			int idTurma = userInput.readInt("Id da turma:");
+			Turma turma = turmaDAO.findById(idTurma);
+			
+			System.out.println();
+			
+			if(turma == null) {
+				System.out.println("Turma não encontrada!");
+			}else {
+				int idProfessor = userInput.readInt("Id do professor:");
+				Professor professor = professorDAO.findById(idProfessor);
+				if(professor == null) {
+					System.out.println("professor não encontrado!");
+				}else {
+					String option = userInput.readText("Vincular professor à turma? (s/n)");
+					if(option.equals("s")) {
+						turma.setProfessor(professor);
+						turmaDAO.update(turma);
+						System.out.println("Professor vinculado á turma.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
+	}
 	
 }
