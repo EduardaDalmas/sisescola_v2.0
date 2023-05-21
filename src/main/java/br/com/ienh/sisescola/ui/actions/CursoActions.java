@@ -138,24 +138,24 @@ public class CursoActions {
 	public void vincularDisciplina() {
 		
 		try {
-			int idDisciplina = userInput.readInt("Id da disciplina:");
-			Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+			int idCurso = userInput.readInt("Id do curso:");	
+			Curso curso = cursoDAO.findById(idCurso);
 			
 			System.out.println();
 			
-			if(disciplina == null) {
-				System.out.println("disciplina não encontrada!");
+			if(curso == null) {
+				System.out.println("Curso não encontrado!");
 			}else {
-				int idCurso = userInput.readInt("Id do curso:");
-				Curso curso = cursoDAO.findById(idCurso);
-				if(curso == null) {
-					System.out.println("curso não encontrado!");
+				int idDisciplina = userInput.readInt("Id da disciplina:");
+				Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+				if(disciplina == null) {
+					System.out.println("Disciplina não encontrada!");
 				}else {
-					String option = userInput.readText("Vincular curso à disciplina? (s/n)");
+					String option = userInput.readText("Vincular disciplina ao curso? (s/n)");
 					if(option.equals("s")) {
-						disciplina.getCursos().add(curso);
-						disciplinaDAO.update(disciplina);
-						System.out.println("curso vinculado á disciplina.");
+						curso.getDisciplinas().add(disciplina);
+						cursoDAO.update(curso);
+						System.out.println("Disciplina vinculada ao curso.");
 					} else {
 						System.out.println("Procedimento cancelado.");
 					}
@@ -163,7 +163,62 @@ public class CursoActions {
 			}
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
-			//e.printStackTrace();
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void desvincularDisciplina() {
+		
+		try {
+			int idCurso = userInput.readInt("Id do curso:");	
+			Curso curso = cursoDAO.findById(idCurso);
+			
+			System.out.println();
+			
+			if(curso == null) {
+				System.out.println("Curso não encontrado!");
+			}else {
+				int idDisciplina = userInput.readInt("Id da disciplina:");
+				Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+				if(disciplina == null) {
+					System.out.println("Disciplina não encontrada!");
+				}else {
+					String option = userInput.readText("Vincular disciplina ao curso? (s/n)");
+					if(option.equals("s")) {
+						curso.getDisciplinas().remove(disciplina);
+						cursoDAO.update(curso);
+						System.out.println("Disciplina desvinculada do curso.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			e.printStackTrace();
+		}
+	}
+
+	public void visualizarDisciplinaCurso() {
+		
+		try {
+			System.out.println();
+			int idCurso = userInput.readInt("Id do curso:");
+			Curso curso = cursoDAO.findById(idCurso);
+			
+			if(curso == null) {
+				System.out.println("Curso não encontrado!");
+			}else {
+				System.out.println();
+				List<Disciplina> disciplinas = curso.getDisciplinas();
+				for (Disciplina disciplina : disciplinas) {
+					System.out.println(disciplina.getId() + " - " + disciplina.getNome() + " - " + disciplina.getCodigo());
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			e.printStackTrace();
 		}
 		
 	}

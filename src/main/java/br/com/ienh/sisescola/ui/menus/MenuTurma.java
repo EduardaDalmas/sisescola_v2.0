@@ -20,7 +20,11 @@ public class MenuTurma implements Menu {
 			System.out.println("4. Buscar por id");
 			System.out.println("5. Buscar todos");
 			System.out.println("6. Vincular aluno a turma");
-			System.out.println("7. Visualizar alunos da turma");
+			System.out.println("7. Desvincular aluno da turma");
+			System.out.println("8. Visualizar alunos da turma");
+			System.out.println("9. Vincular disciplina a turma");
+			System.out.println("10. Desvincular disciplina da turma");
+			System.out.println("11. Visualizar disciplina da turma");
 			System.out.println("---------------------");
 			System.out.println("0. Sair deste menu");
 			System.out.println();
@@ -33,7 +37,11 @@ public class MenuTurma implements Menu {
 			else if(option == 4) turmaActions.buscarPorId();
 			else if(option == 5) turmaActions.buscarTodos();
 			else if(option == 6) turmaActions.vincularAluno();
-			else if(option == 7) turmaActions.visualizarAlunosTurma();
+			else if(option == 8) turmaActions.visualizarAlunosTurma();
+			else if(option == 7) turmaActions.desvincularAluno();
+			else if(option == 9) turmaActions.vincularDisciplina();
+			else if(option == 10) turmaActions.desvincularDisciplina();
+			else if(option == 11) turmaActions.visualizarDisciplinaTurma();
 			else if(option == 0) break;
 			
 		}

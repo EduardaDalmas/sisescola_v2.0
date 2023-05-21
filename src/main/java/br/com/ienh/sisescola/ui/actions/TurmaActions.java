@@ -3,9 +3,11 @@ package br.com.ienh.sisescola.ui.actions;
 import java.util.List;
 
 import br.com.ienh.sisescola.dao.AlunoDAO;
+import br.com.ienh.sisescola.dao.DisciplinaDAO;
 import br.com.ienh.sisescola.dao.ProfessorDAO;
 import br.com.ienh.sisescola.dao.TurmaDAO;
 import br.com.ienh.sisescola.entidades.Aluno;
+import br.com.ienh.sisescola.entidades.Disciplina;
 import br.com.ienh.sisescola.entidades.Professor;
 import br.com.ienh.sisescola.entidades.Turma;
 import br.com.ienh.sisescola.uteis.UserInput;
@@ -16,6 +18,7 @@ public class TurmaActions {
 	private TurmaDAO turmaDAO;
 	private AlunoDAO alunoDAO;
 	private ProfessorDAO professorDAO;
+	private DisciplinaDAO disciplinaDAO;
 	
 	public TurmaActions() {
 		
@@ -24,6 +27,7 @@ public class TurmaActions {
 			turmaDAO = new TurmaDAO();
 			alunoDAO = new AlunoDAO();
 			professorDAO = new ProfessorDAO();
+			disciplinaDAO = new DisciplinaDAO();
 		} catch (Exception e) {
 			System.out.println("Ocorreu algum problema no acesso a base de dados!");
 		}
@@ -175,6 +179,39 @@ public class TurmaActions {
 		
 	}
 
+	public void desvincularAluno() {
+		
+		try {
+			int idTurma = userInput.readInt("Id da turma:");
+			Turma turma = turmaDAO.findById(idTurma);
+			
+			System.out.println();
+			
+			if(turma == null) {
+				System.out.println("Turma não encontrada!");
+			}else {
+				int idAluno = userInput.readInt("Id do aluno:");
+				Aluno aluno = alunoDAO.findById(idAluno);
+				if(aluno == null) {
+					System.out.println("Aluno não encontrado!");
+				}else {
+					String option = userInput.readText("Desvincular aluno à turma? (s/n)");
+					if(option.equals("s")) {
+						turma.getAlunos().remove(aluno);
+						turmaDAO.update(turma);
+						System.out.println("Aluno desvinculado da turma.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
+	}
+
 	public void visualizarAlunosTurma() {
 		
 		try {
@@ -189,6 +226,95 @@ public class TurmaActions {
 				List<Aluno> alunos = turma.getAlunos();
 				for (Aluno aluno : alunos) {
 					System.out.println(aluno.getId() + " - " + aluno.getNome());
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void vincularDisciplina() {
+		
+		try {
+			int idTurma = userInput.readInt("Id da turma:");
+			Turma turma = turmaDAO.findById(idTurma);
+			
+			System.out.println();
+			
+			if(turma == null) {
+				System.out.println("Turma não encontrada!");
+			}else {
+				int idDisciplina = userInput.readInt("Id da disciplina:");
+				Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+				if(disciplina == null) {
+					System.out.println("Disciplina não encontrado!");
+				}else {
+					String option = userInput.readText("Vincular disciplina à turma? (s/n)");
+					if(option.equals("s")) {
+						turma.getDisciplinas().add(disciplina);
+						turmaDAO.update(turma);
+						System.out.println("Disciplina vinculada á turma.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
+	}
+
+	public void desvincularDisciplina() {
+		
+		try {
+			int idTurma = userInput.readInt("Id da turma:");
+			Turma turma = turmaDAO.findById(idTurma);
+			
+			System.out.println();
+			
+			if(turma == null) {
+				System.out.println("Turma não encontrada!");
+			}else {
+				int idDisciplina = userInput.readInt("Id da disciplina:");
+				Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+				if(disciplina == null) {
+					System.out.println("Disciplina não encontrado!");
+				}else {
+					String option = userInput.readText("Vincular disciplina à turma? (s/n)");
+					if(option.equals("s")) {
+						turma.getDisciplinas().remove(disciplina);
+						turmaDAO.update(turma);
+						System.out.println("Disciplina vinculada á turma.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
+	}
+
+	public void visualizarDisciplinaTurma() {
+		
+		try {
+			System.out.println();
+			int idTurma = userInput.readInt("Id da turma:");
+			Turma turma = turmaDAO.findById(idTurma);
+			
+			if(turma == null) {
+				System.out.println("Turma não encontrada!");
+			}else {
+				System.out.println();
+				List<Disciplina> disciplinas = turma.getDisciplinas();
+				for (Disciplina disciplina : disciplinas) {
+					System.out.println(disciplina.getId() + " - " + disciplina.getNome() + " - " + disciplina.getCodigo());
 				}
 			}
 		}catch(Exception e) {
