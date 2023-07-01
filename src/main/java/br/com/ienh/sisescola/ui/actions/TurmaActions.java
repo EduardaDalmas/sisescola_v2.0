@@ -140,7 +140,7 @@ public class TurmaActions {
 				System.out.println("Não há turmas para apresentar!");
 			}else {
 				for (Turma turma : turmas) {
-					System.out.println("ID: " + turma.getId() + " - Semestre: " + turma.getSemestre() + " - Professor: " + turma.getProfessor().getNome());
+					System.out.println("ID: " + turma.getId() + " - Semestre: " + turma.getSemestre() + " - Professor: " + turma.getProfessor());
 				}
 			}
 		}catch(Exception e) {

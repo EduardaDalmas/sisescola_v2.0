@@ -2,6 +2,7 @@ package br.com.ienh.sisescola.ui.actions;
 import java.util.List;
 import br.com.ienh.sisescola.dao.DisciplinaDAO;
 import br.com.ienh.sisescola.dao.TurmaDAO;
+import br.com.ienh.sisescola.entidades.Curso;
 import br.com.ienh.sisescola.entidades.Disciplina;
 import br.com.ienh.sisescola.entidades.Turma;
 import br.com.ienh.sisescola.uteis.UserInput;
@@ -167,6 +168,29 @@ public class DisciplinaActions {
 		}catch(Exception e) {
 			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
 			//e.printStackTrace();
+		}
+		
+	}
+
+	public void visualizarTurmaDisciplina() {
+		
+		try {
+			System.out.println();
+			int idDisciplina = userInput.readInt("Id da disciplina:");
+			Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+			
+			if(disciplina == null) {
+				System.out.println("Disciplina não encontrada!");
+			}else {
+				System.out.println();
+				List<Turma> turmas = disciplina.getTurmas();
+				for (Turma turma : turmas) {
+					System.out.println(turma.getId() + " - " + turma.getSemestre() + " - " + turma.getProfessor().getNome());
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			e.printStackTrace();
 		}
 		
 	}
