@@ -73,7 +73,7 @@ public class ProfessorActions {
 		try {
 			System.out.println();
 			
-			int id = userInput.readInt("Informe o id do aluno que deseja remover:");
+			int id = userInput.readInt("Informe o id do professor que deseja remover:");
 			
 			Professor professor = professorDAO.findById(id);
 			
