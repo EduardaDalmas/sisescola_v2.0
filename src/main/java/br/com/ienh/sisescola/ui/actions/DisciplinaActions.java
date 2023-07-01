@@ -172,6 +172,39 @@ public class DisciplinaActions {
 		
 	}
 
+	public void desvincularTurma() {
+		
+		try {
+			int idDisciplina = userInput.readInt("Id da disciplina:");
+			Disciplina disciplina = disciplinaDAO.findById(idDisciplina);
+			
+			System.out.println();
+			
+			if(disciplina == null) {
+				System.out.println("disciplina não encontrada!");
+			}else {
+				int idTurma = userInput.readInt("Id da turma:");
+				Turma turma = turmaDAO.findById(idTurma);
+				if(turma == null) {
+					System.out.println("turma não encontrado!");
+				}else {
+					String option = userInput.readText("Desvincular turma à disciplina? (s/n)");
+					if(option.equals("s")) {
+						disciplina.getTurmas().remove(turma);
+						disciplinaDAO.update(disciplina);
+						System.out.println("turma desvinculado da disciplina.");
+					} else {
+						System.out.println("Procedimento cancelado.");
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Ocorreu um erro! Entre em contato com o administrador!");
+			//e.printStackTrace();
+		}
+		
+	}
+
 	public void visualizarTurmaDisciplina() {
 		
 		try {

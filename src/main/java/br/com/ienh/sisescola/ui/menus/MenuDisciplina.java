@@ -20,7 +20,8 @@ public class MenuDisciplina {
 			System.out.println("4. Visualizar disciplinas");
 			System.out.println("5. Buscar disciplina por ID");
 			System.out.println("6. Vincular turma á disciplina");
-			System.out.println("7. Visualizar turma da disciplina");
+			System.out.println("7. Desvincular turma á disciplina");
+			System.out.println("8. Visualizar turma da disciplina");
 			System.out.println("---------------------");
 			System.out.println("0. Sair deste menu");
 			System.out.println();
@@ -33,7 +34,8 @@ public class MenuDisciplina {
 			else if(option == 4) disciplinaActions.buscarTodos();
 			else if(option == 5) disciplinaActions.buscarPorId();
 			else if(option == 6) disciplinaActions.vincularTurma();
-			else if(option == 7) disciplinaActions.visualizarTurmaDisciplina();
+			else if(option == 7) disciplinaActions.desvincularTurma();
+			else if(option == 8) disciplinaActions.visualizarTurmaDisciplina();
 			else if(option == 0) break;
 			
 		}
