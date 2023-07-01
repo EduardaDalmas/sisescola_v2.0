@@ -39,8 +39,8 @@ public class DisciplinaActions {
 			
 			System.out.println("disciplina registrado com sucesso!");
         }catch(Exception e) {
-			System.out.println("Ocorreu um erro ao tentar registrar o contato! Entre em contato com o administrador!");
-			//e.printStackTrace();
+			//System.out.println("Ocorreu um erro ao tentar registrar o contato! Entre em contato com o administrador!");
+			e.printStackTrace();
 		}
     }
 

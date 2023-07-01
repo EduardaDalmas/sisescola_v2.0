@@ -184,7 +184,7 @@ public class CursoActions {
 				if(disciplina == null) {
 					System.out.println("Disciplina não encontrada!");
 				}else {
-					String option = userInput.readText("Vincular disciplina ao curso? (s/n)");
+					String option = userInput.readText("Desvincular disciplina do curso? (s/n)");
 					if(option.equals("s")) {
 						curso.getDisciplinas().remove(disciplina);
 						cursoDAO.update(curso);
