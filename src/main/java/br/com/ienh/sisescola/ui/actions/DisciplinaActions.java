@@ -2,7 +2,6 @@ package br.com.ienh.sisescola.ui.actions;
 import java.util.List;
 import br.com.ienh.sisescola.dao.DisciplinaDAO;
 import br.com.ienh.sisescola.dao.TurmaDAO;
-import br.com.ienh.sisescola.entidades.Curso;
 import br.com.ienh.sisescola.entidades.Disciplina;
 import br.com.ienh.sisescola.entidades.Turma;
 import br.com.ienh.sisescola.uteis.UserInput;
